@@ -89,7 +89,7 @@ namespace OperationManager
             Operations_Search_Date2.Enabled = Operations_CheckBox.Checked;
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
+        private void Operations_Button_Add_Click(object sender, EventArgs e)
         {
 
         }
