@@ -1,4 +1,4 @@
-using Database;
+﻿using Database;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 
@@ -22,7 +22,7 @@ namespace OperationManager
             Parameters[1] = Misc.GetSqlParameter(Accounts_Search_Account.Text, "AccountID");
             Parameters[2] = Misc.GetSqlParameter(Accounts_Search_FullName.Text, "FullName");
 
-            if ( Accounts_Search_RadioM.Checked )
+            if (Accounts_Search_RadioM.Checked)
             {
                 Parameters[3] = Misc.GetSqlParameter(Accounts_Search_Cash.Text, "Cash");
             }
@@ -41,6 +41,7 @@ namespace OperationManager
 
         private void Accounts_Remove_Click(object sender, EventArgs e)
         {
+
             if (Grid_Accounts.CurrentRow != null)
             {
                 SqlParameter[] Parameters =
@@ -48,7 +49,11 @@ namespace OperationManager
                     new SqlParameter("@ID", Grid_Accounts.CurrentRow.Cells[0].Value)
                 };
 
-                Methods.ExecuteCommand(Misc.GetSqlCommand("RemoveAccount", Parameters), "���� ������� �����!");
+                Methods.ExecuteCommand(Misc.GetSqlCommand("RemoveAccount", Parameters), "Счёт успешно удалён.");
+            }
+            else
+            {
+                MessageBox.Show("Запись не выбрана.");
             }
         }
 
@@ -58,7 +63,6 @@ namespace OperationManager
             Parameters[0] = Misc.GetSqlParameter(Operations_Search_Number.Text, "ID");
             Parameters[1] = Misc.GetSqlParameter(Operations_Search_From.Text, "AccountFrom");
             Parameters[2] = Misc.GetSqlParameter(Operations_Search_To.Text, "AccountTo");
-            Console.WriteLine(Operations_Search_Date.Text);
 
             if (Operations_CheckBox.Checked)
             {
@@ -91,7 +95,7 @@ namespace OperationManager
 
         private void Operations_Button_Add_Click(object sender, EventArgs e)
         {
-
+            new Operations_Add().ShowDialog();
         }
     }
 }
