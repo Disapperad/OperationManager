@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace Database;
 
@@ -26,16 +21,10 @@ internal static class Methods
         {
             MessageBox.Show("Нет соединения с базой данных!");
         }
-        
+
         // I think connection error very rare. No need to checking.
-        if (executeCommand.ExecuteNonQuery() > 0)
-        {
-            MessageBox.Show(message);
-        }
-        else
-        {
-            MessageBox.Show("Что-то пошло не так.");
-        }
+        Console.WriteLine(executeCommand.ExecuteScalar());
+
 
         executeCommand.Dispose();
     }

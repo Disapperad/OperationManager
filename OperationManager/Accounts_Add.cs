@@ -24,9 +24,10 @@ namespace OperationManager
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            SqlParameter[] Parameters = new SqlParameter[1];
+            SqlParameter[] Parameters = new SqlParameter[2];
             Parameters[0] = Misc.GetSqlParameter(AccountID.Text, "AccountID");
-            
+            Parameters[1] = Misc.GetSqlParameter(FullName.Text, "FullName");
+
             Methods.ExecuteCommand(Misc.GetSqlCommand("AddAccount", Parameters), "Запись успешно добавлена!");
 
             Misc.SetGridContent(_grid, "SearchAccounts");
